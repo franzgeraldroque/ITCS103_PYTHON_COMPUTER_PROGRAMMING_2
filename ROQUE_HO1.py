@@ -12,7 +12,7 @@ def result(avg, leng):
     elif leng < avg:
         print(f"The length of the word '{word}' is less than average")
     else:
-        print("The length of the word and the average are equal")
+        print(f"The length of the word '{word}' and the average are equal")
 
 word = input("Enter a word --> ")
 length = len(word)
@@ -27,4 +27,5 @@ avrg = average(num)
 print(num)
 print(f'The length of the word is {length}')
 print(f'The average of the numbers is {avrg}')
+
 result(avrg, length)
