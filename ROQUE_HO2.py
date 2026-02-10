@@ -6,6 +6,7 @@ window.geometry("600x600")
 window.resizable(True,True)
 window.config(bg= "light pink", cursor= "arrow")
 
+#Student Profile
 label = franz.Label(window, 
                     text= "STUDENT PROFILE", 
                     font= ("Arial", 20, "bold"), 
@@ -13,6 +14,7 @@ label = franz.Label(window,
                     bg= "light pink")
 label.pack(padx= 20, pady= 10)
 
+#Name
 label = franz.Label(window, 
                     text= "Name: Franz Gerald L. Roque", 
                     font= ("Arial", 11), 
@@ -22,6 +24,7 @@ label = franz.Label(window,
                     width= 100)
 label.pack(padx= 50, pady= 10)
 
+#Age
 label = franz.Label(window, 
                     text = "Age: 18", 
                     font= ("Arial", 11), 
@@ -31,6 +34,7 @@ label = franz.Label(window,
                     width= 100)
 label.pack(padx= 50, pady= 10)
 
+#Course and Section
 label = franz.Label(window, 
                     text = "Course and Section: BSIT-1A", 
                     font= ("Arial", 11), 
@@ -40,6 +44,7 @@ label = franz.Label(window,
                     width= 100)
 label.pack(padx= 50, pady= 10)
 
+#Birth D
 label = franz.Label(window, 
                     text= "Birthday: June 17, 2007", 
                     font= ("Arial", 11), 
@@ -49,6 +54,7 @@ label = franz.Label(window,
                     width= 100)
 label.pack(padx= 50, pady= 10)
 
+#Motto
 label = franz.Label(window, 
                     text= "Motto: 'Worry less, smile more'", 
                     font= ("Arial", 11), 
