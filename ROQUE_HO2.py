@@ -57,7 +57,7 @@ label.pack(padx= 50, pady= 10)
 #Motto
 label = franz.Label(window, 
                     text= "Motto: 'Worry less, smile more'", 
-                    font= ("Arial", 11), 
+                    font= ("Arial", 11, "italic"), 
                     fg= "black", 
                     bg= "light pink", 
                     anchor= "w", 
