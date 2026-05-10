@@ -10,12 +10,6 @@ def favorite_people():
     sheet["D1"] = "Birth Year"
     sheet["E1"] = "Age"
 
-    sheet.column_dimensions["A"].width = 10
-    sheet.column_dimensions["B"].width = 13
-    sheet.column_dimensions["C"].width = 13
-    sheet.column_dimensions["D"].width = 10
-    sheet.column_dimensions["E"].width = 10
-
     print("===== Favorite People Recorder =====")
 
     for i in range (1,4):
