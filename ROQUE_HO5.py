@@ -40,7 +40,7 @@ def dream_file():
             confirmation = input("type YES to continue ----> ").upper()
 
             if confirmation == "YES":
-                new_set = input("Write you new set of inspiring messages ---->")
+                new_set = input("Write your new set of inspiring messages ---->")
                 file = open("Dream.txt", "w")
                 file.write(new_set)
                 file.close()
