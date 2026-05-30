@@ -182,7 +182,7 @@ title.grid(row=0, column=0, columnspan=9)
 
 # Frame
 genframe = tk.Frame(window, bg="lightblue", bd=4, relief="groove")
-genframe.grid(row=1, column=0, columnspan=10, padx=10, pady=10)
+genframe.grid(row=1, column=0, columnspan=9, padx=10, pady=10)
 
 # First Name Entry
 fname_entry = tk.Entry(genframe, font=("Poppins", 12))
