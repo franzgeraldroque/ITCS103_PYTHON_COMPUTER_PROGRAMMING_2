@@ -7,17 +7,6 @@ window = tk.Tk()
 window.title("Fitness Progress Tracker")
 window.configure(bg="lightblue")
 
-# def create(): 
-#     name = cname_entry.get()
-#     age = age_entry.get()
-#     height = height_entry.get()
-#     weight = weight_entry.get()
-#     streak = streak_entry.get()
-
-#     if name == "" or age == "" or height == "" or weight == "" or streak == "":
-#         messagebox.showerror("ERROR", "Please fill up all fields required!")
-#         return
-
 def display():
     workbook = op.load_workbook("Roque_Database.xlsx")
     sheet = workbook.active
@@ -30,22 +19,42 @@ def display():
 
 def input_validation():
     first = fname_entry.get()
-    middle = mname_entry.get()
     last = lname_entry.get()
     age = age_entry.get()
     height = height_entry.get()
     weight = weight_entry.get()
     streak = streak_entry.get()
 
-    if not first or not middle or not last or not age or not height or not weight or not streak:
+    if not first or not last or not age or not height or not weight or not streak:
         messagebox.showerror("ERROR", "All field required!!!")
         return False
     
-    if not age.isdigit() and height.isdigit() and weight.isdigit() and streak.isdigit():
-        messagebox.showerror("ERROR", "Age, Height, Weight, and Streak Days Must be a number!!!")
+    if not height.isdigit() or not weight.isdigit() or not age.isdigit() or not streak.isdigit():
+        messagebox.showerror("ERROR", "Age, Height, Weight, and Streak Days must be a number!!")
         return False
     
     return True
+
+def streak_milestone():
+    streak = int(streak_entry.get())
+
+    if streak == 1:
+        messagebox.showinfo("Milestone!", "Good job! Starting is better than doing nothing")
+
+    elif streak == 7:
+        messagebox.showinfo("Milestone!", "One week strong! Your foundation is built, keep the momentum going!!\n\nREMINDER: It has been a week! Please select your record and Update your current weight.")
+
+    elif streak == 10:
+        messagebox.showinfo("Milestone!", "Double digits achieved! Great work, keep it going!!\n\nREMINDER: It has been 10 days! It's time to Update your current weight again, to check your current BMI.")
+
+    elif streak == 15:
+        messagebox.showinfo("Milestone!", "Halfway mark reached! Your discipline is remarkable, keep pushing!!\n\nREMINDER: Halfway done! Update your current weight to keep in track of your BMI.")
+
+    elif streak == 20:
+        messagebox.showinfo("Milestone!", "Woww!! Most people quit here; stay resilient, you're too close to stop now!!\n\nREMINDER: Well disciplined! Keep in track by Updating your weight today.")
+
+    elif streak == 30:
+        messagebox.showinfo("Milestone!", "Milestone unlocked! 30 days of dedication and discipline, be proud and reward you're self!!\n\nREMINDER: What a Milestone! It's End of the Month, please Update your weight to see your overall progress.")
 
 def create(): 
     if not input_validation():
@@ -72,6 +81,8 @@ def create():
 
     messagebox.showinfo("Success", "Record added successfully")
     
+    streak_milestone()
+
     display()
 
 def auto_populate(event):
@@ -124,8 +135,8 @@ def update():
     for rows in sheet.iter_rows(min_row=2):
         if str(rows[0].value) == str(record_id):
             rows[1].value = last
-            rows[2].value = middle
-            rows[3].value = first
+            rows[3].value = middle
+            rows[2].value = first
             rows[4].value = age
             rows[5].value = height
             rows[6].value = weight
@@ -134,6 +145,8 @@ def update():
     
     workbook.save("Roque_Database.xlsx")
     messagebox.showinfo("Success", "Record updated Successfully")
+
+    streak_milestone()
 
     display()
 
