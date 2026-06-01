@@ -56,6 +56,30 @@ def streak_milestone():
     elif streak == 30:
         messagebox.showinfo("Milestone!", "Milestone unlocked! 30 days of dedication and discipline, be proud and reward you're self!!\n\nREMINDER: What a Milestone! It's End of the Month, please Update your weight to see your overall progress.")
 
+def bmi_chart(event=None):
+    height_t = height_entry.get()
+    weight_t = weight_entry.get()
+
+    if height_t == "" or weight_t == "":
+        return
+
+    height = int(height_entry.get())
+    weight = int(weight_entry.get())
+
+    height_cal = height / 100
+    bmi = round(weight / (height_cal * height_cal), 2)
+
+    if bmi <= 18.5:
+        status = "Underweight"
+
+    elif bmi > 18.5 and bmi < 25:
+        status = "Normal Weight"
+
+    elif bmi >= 25:
+        status = "Overweight or Obese"
+
+    bmi_label.config(text=f"Your BMI is {bmi}, which means you're {status}!\n<18.5 = Underweight\n18.6 - 24.9 = Normal Weight\n>25 = Overweight")
+
 def create(): 
     if not input_validation():
         return
@@ -81,6 +105,8 @@ def create():
 
     messagebox.showinfo("Success", "Record added successfully")
     
+    bmi_chart()
+
     streak_milestone()
 
     display()
@@ -145,6 +171,8 @@ def update():
     
     workbook.save("Roque_Database.xlsx")
     messagebox.showinfo("Success", "Record updated Successfully")
+
+    bmi_chart()
 
     streak_milestone()
 
@@ -228,10 +256,14 @@ weight_label.grid(row=5, column=3, columnspan=1)
 
 # Streak Days
 streak_entry = tk.Entry(genframe, font=("Poppins", 12))
-streak_entry.grid(row=6, column=1, columnspan=4, padx=10, pady=(10, 0))
+streak_entry.grid(row=6, column=0, columnspan=2, padx=10, pady=(10, 0))
 
 streak_label = tk.Label(genframe, text="Streak Days", font=("Poppins", 10, "italic"), bg="lightblue")
-streak_label.grid(row=7, column=1, columnspan=4)
+streak_label.grid(row=7, column=0, columnspan=2)
+
+bmi_label = tk.Label(genframe,  text="BMI:\n<18.5 = Underweight\n18.6 - 24.9 = Normal Weight\n>25 = Overweight", font=("Poppins", 12, "italic"), bg="lightblue")
+bmi_label.grid(row=6, column=2, columnspan=2, rowspan=2)
+bmi_label.bind("<Return>", bmi_chart)
 
 # Buttons
 submit_btn = tk.Button(window, text="Submit", font=("Poppins", 12, "bold"), bg="lightpink", command=create)
